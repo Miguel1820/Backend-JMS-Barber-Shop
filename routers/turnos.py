@@ -30,11 +30,7 @@ def obtener_turnos_cliente(cliente_id: int, db: Session = Depends(get_db)):
 
 @router.get("/barbero/{barbero_user_id}", response_model=List[TurnoSchema])
 def obtener_turnos_barbero(barbero_user_id: int, db: Session = Depends(get_db)):
-    barbero = db.query(Barbero).filter(Barbero.user_id == barbero_user_id).first()
-    if not barbero:
-        raise HTTPException(status_code=404, detail="Barbero no encontrado")
-
-    turnos = db.query(Turno).filter(Turno.barbero_id == barbero.id).all()
+    turnos = db.query(Turno).filter(Turno.barbero_id == barbero_user_id).all()
     return turnos
 
 @router.put("/{turno_id}/estado")

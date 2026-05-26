@@ -46,7 +46,7 @@ class Turno(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     cliente_id = Column(Integer, ForeignKey("users.id"))
-    barbero_user_id = Column(Integer, ForeignKey("users.id"))
+    barbero_id = Column(Integer, ForeignKey("users.id"))
     servicio_id = Column(Integer, ForeignKey("servicios.id"))
     fecha = Column(DateTime, index=True)
     hora_inicio = Column(String)
